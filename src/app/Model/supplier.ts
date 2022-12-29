@@ -1,3 +1,5 @@
 export class Supplier {
-    supplier
+    supplierID:number;
+    supplierName: string;
+    supplierContact: number;
 }
