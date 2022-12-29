@@ -3,6 +3,8 @@ package com.infy.springbootrestapicrudapp.app.productController;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +27,10 @@ public class ProductController {
 	ProductService productService;
 	
 	@PostMapping(value = "/product")
-	public Product saveProduct(@RequestBody Product product)
+	public ResponseEntity<Product> saveProduct(@RequestBody Product product)
 	{
 		Product product2 =productService.saveProduct(product);
-		return product2;
+		return new ResponseEntity<Product>(product2,HttpStatus.CREATED);
 	}
 	
 	@GetMapping(value = "/getProduct")
