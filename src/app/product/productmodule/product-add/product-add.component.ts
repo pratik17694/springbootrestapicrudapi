@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Product } from 'src/app/Model/product';
+
 import { CommonserviceService } from 'src/app/shared/commonservice.service';
 
 @Component({

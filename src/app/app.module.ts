@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 
 import { ProductmoduleModule } from './product/productmodule/productmodule.module';
 
+import { SupplierModule } from './supplier/supplier.module';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    ProductmoduleModule
+    ProductmoduleModule,
+    SupplierModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../Model/product';
 import { HttpClient } from '@angular/common/http';
+import { Supplier } from '../Model/supplier';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,15 @@ export class CommonserviceService {
   pro:Product={
     productID: 0,
     productName: '',
-    productPrice: 0
+    productPrice: 0,
+    supplier: new Supplier
   }
 
   pro1:Product={
     productID: 0,
     productName: '',
-    productPrice: 0
+    productPrice: 0,
+    supplier: new Supplier
   }
 
   prodg:Product[];
