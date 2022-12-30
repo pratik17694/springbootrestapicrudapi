@@ -43,6 +43,14 @@ public class ProductController {
 		return new ResponseEntity<BaseResponse<Iterable<Product>>>(baseResponse, HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/gets/{productID}")
+	public ResponseEntity<BaseResponse<Optional<Product>>> getSingleData(@PathVariable("productID") Integer productID)
+	{
+		Optional<Product> getSingleData= productService.checkData(productID);
+		BaseResponse<Optional<Product>> baseResponse= new BaseResponse<Optional<Product>>(200, "fetching data", getSingleData);
+		return new ResponseEntity<BaseResponse<Optional<Product>>>(baseResponse, HttpStatus.OK);
+	}
+	
 	@PutMapping(value = "/product/{productID}")
 	public ResponseEntity<BaseResponse<Product>> editProduct(@PathVariable("productID") Integer productID, @RequestBody Product product)
 	{

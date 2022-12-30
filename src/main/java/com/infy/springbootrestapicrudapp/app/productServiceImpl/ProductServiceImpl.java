@@ -42,4 +42,14 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public Optional<Product> checkData(Integer productID) {
+		
+		Optional<Product> optional= productRepositary.findById(productID);
+		return optional;
+	}
+
+	
+	
+
 }

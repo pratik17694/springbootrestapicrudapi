@@ -14,4 +14,10 @@ public interface ProductService {
 
 	public void deleteData(Integer productID);
 
+	
+
+	public Optional<Product> checkData(Integer productID);
+
+	
+
 }
