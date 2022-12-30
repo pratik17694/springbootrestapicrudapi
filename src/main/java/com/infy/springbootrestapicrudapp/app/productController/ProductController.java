@@ -34,10 +34,10 @@ public class ProductController {
 	}
 	
 	@GetMapping(value = "/getProduct")
-	public Iterable<Product> getAllData()
+	public ResponseEntity<Iterable<Product>> getAllData()
 	{
 		Iterable<Product> iterableProduct = productService.getAllData();
-		return iterableProduct;
+		return new ResponseEntity<Iterable<Product>>(iterableProduct,HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/product/{productID}")
