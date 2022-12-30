@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infy.springbootrestapicrudapp.app.Model.Product;
+import com.infy.springbootrestapicrudapp.app.Response.BaseResponse;
 import com.infy.springbootrestapicrudapp.app.productService.ProductService;
 
 @CrossOrigin("*")
@@ -27,29 +28,34 @@ public class ProductController {
 	ProductService productService;
 	
 	@PostMapping(value = "/product")
-	public ResponseEntity<Product> saveProduct(@RequestBody Product product)
+	public ResponseEntity<BaseResponse<Product>> saveProduct(@RequestBody Product product)
 	{
 		Product product2 =productService.saveProduct(product);
-		return new ResponseEntity<Product>(product2,HttpStatus.CREATED);
+		BaseResponse<Product> baseResponse= new BaseResponse<Product>(201, "Data Saved Successfully",product2);
+		return new ResponseEntity<BaseResponse<Product>>(baseResponse, HttpStatus.CREATED);
 	}
 	
 	@GetMapping(value = "/getProduct")
-	public ResponseEntity<Iterable<Product>> getAllData()
+	public ResponseEntity<BaseResponse<Iterable<Product>>> getAllData()
 	{
 		Iterable<Product> iterableProduct = productService.getAllData();
-		return new ResponseEntity<Iterable<Product>>(iterableProduct,HttpStatus.OK);
+		BaseResponse<Iterable<Product>> baseResponse= new BaseResponse<Iterable<Product>>(200,"Data Fetched Successfully",iterableProduct);
+		return new ResponseEntity<BaseResponse<Iterable<Product>>>(baseResponse, HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/product/{productID}")
-	public Product editProduct(@PathVariable("productID") Integer productID, @RequestBody Product product)
+	public ResponseEntity<BaseResponse<Product>> editProduct(@PathVariable("productID") Integer productID, @RequestBody Product product)
 	{
 		Optional<Product> product1 = productService.editData(productID);
 		if(product1.isPresent())
 		{
 			product.setProductID(product1.get().getProductID());
 			Product product2 = productService.saveProduct(product);
-			return product2;
+			BaseResponse<Product> baseResponse= new BaseResponse<Product>(201, "Data Edited successfully", product2);
+			
+			return new ResponseEntity<BaseResponse<Product>>(baseResponse, HttpStatus.CREATED);
 		}
+		
 		return null;
 	}
 	
