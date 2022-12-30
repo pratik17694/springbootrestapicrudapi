@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../Model/product';
 import { HttpClient } from '@angular/common/http';
 import { Supplier } from '../Model/supplier';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,14 @@ export class CommonserviceService {
     productID: 0,
     productName: '',
     productPrice: 0,
-    supplier: new Supplier
+    supplier: undefined
   }
 
   pro1:Product={
     productID: 0,
     productName: '',
     productPrice: 0,
-    supplier: new Supplier
+    supplier: undefined
   }
 
   sup:Supplier={
@@ -39,7 +40,7 @@ export class CommonserviceService {
   prodg:Product[];
   supp1:Supplier[];
 
-  saveProductData(product:Product)
+  saveProductData(product:FormGroup)
   {
     alert("we are at Commonservice")
     return this.http.post("http://localhost:9090/api/product", product);

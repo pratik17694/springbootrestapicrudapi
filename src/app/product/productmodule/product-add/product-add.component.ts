@@ -29,12 +29,8 @@ export class ProductAddComponent {
 
   saveProduct()
   {
-    alert("we are at save method");
-    this.cs.pro.productID=this.savepro.get('productID').value;
-    this.cs.pro.productName=this.savepro.get('productName').value;
-    this.cs.pro.productPrice=this.savepro.get('productPrice').value;
-    this.cs.pro.supplier=this.savepro.get('supplier').value;
-    this.cs.saveProductData(this.cs.pro).subscribe();
+    
+    this.cs.saveProductData(this.savepro.value).subscribe((data:any)=>{alert(data.msg)});
     window.location.reload();
   }
 

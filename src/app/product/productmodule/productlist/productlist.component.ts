@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Model/product';
 import { Supplier } from 'src/app/Model/supplier';
 import { CommonserviceService } from 'src/app/shared/commonservice.service';
@@ -11,7 +12,7 @@ import { CommonserviceService } from 'src/app/shared/commonservice.service';
 })
 export class ProductlistComponent {
 
-  constructor(public cs:CommonserviceService, private fb:FormBuilder )
+  constructor(public cs:CommonserviceService, private fb:FormBuilder, public router:Router )
   {}
 
   savepro:FormGroup;
@@ -34,28 +35,13 @@ export class ProductlistComponent {
 
   saveProduct()
   {
-    if(this.savepro.get('productID').value==0)
-    {
-    alert("we are at save method");
-    this.cs.pro.productID=this.savepro.get('productID').value;
-    this.cs.pro.productName=this.savepro.get('productName').value;
-    this.cs.pro.productPrice=this.savepro.get('productPrice').value;
-    this.cs.saveProductData(this.cs.pro).subscribe();
-    }
-    else
-    {
-      alert("we are at save method");
-    this.cs.pro1.productID=this.savepro.get('productID').value;
-    this.cs.pro1.productName=this.savepro.get('productName').value;
-    this.cs.pro1.productPrice=this.savepro.get('productPrice').value;
-    this.cs.updateData(this.cs.pro1).subscribe();
-    }
-    window.location.reload();
+    
   }
 
   updateProduct(prod:Product)
   {
     this.cs.pro1=Object.assign({},prod);
+    this.router.navigate(['/productadd'])
   }
 
   deleteProduct(productID:number)
