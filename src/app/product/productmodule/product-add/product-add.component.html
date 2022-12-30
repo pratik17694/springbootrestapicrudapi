@@ -21,9 +21,16 @@
             <label class="form-label" >Product Price</label>
           </div>
       </div>
+      
+      <select class="form-select" aria-label="Default select example" >
+        <option selectet>select Supplier</option>
+        <option *ngFor="let s of cs.supp1" formControlName="supplier" value="{{s.supplierName}}">{{s.supplierName}}</option>
+      </select>
     </div>
   
+    
     <!-- Email input -->
+    
     
   
    

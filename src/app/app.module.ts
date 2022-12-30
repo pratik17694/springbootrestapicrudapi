@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductmoduleModule } from './product/productmodule/productmodule.module';
 
 import { SupplierModule } from './supplier/supplier.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { SupplierModule } from './supplier/supplier.module';
     BrowserModule,
     AppRoutingModule, 
     ProductmoduleModule,
-    SupplierModule
+    SupplierModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

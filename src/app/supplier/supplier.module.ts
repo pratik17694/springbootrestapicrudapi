@@ -11,10 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
    SupplieraddComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,FormsModule, HttpClientModule,ReactiveFormsModule
   ],
   exports:[
-    SupplieraddComponent, ReactiveFormsModule, FormsModule, HttpClientModule
+    SupplieraddComponent,  
   ]
 })
 export class SupplierModule { }

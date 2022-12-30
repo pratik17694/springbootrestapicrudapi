@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/Model/product';
+import { Supplier } from 'src/app/Model/supplier';
 import { CommonserviceService } from 'src/app/shared/commonservice.service';
 
 @Component({
@@ -20,6 +21,8 @@ export class ProductlistComponent {
     this.cs.getProduct().subscribe((prod:Product[])=>{
     this.cs.prodg=prod;
     })
+
+    
 
     this.savepro= this.fb.group({
       productID:[],

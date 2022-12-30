@@ -24,7 +24,20 @@ export class CommonserviceService {
     supplier: new Supplier
   }
 
+  sup:Supplier={
+    supplierID: 0,
+    supplierName: '',
+    supplierContact: 0
+  }
+
+  sup1:Supplier={
+    supplierID: 0,
+    supplierName: '',
+    supplierContact: 0
+  }
+
   prodg:Product[];
+  supp1:Supplier[];
 
   saveProductData(product:Product)
   {
@@ -32,9 +45,20 @@ export class CommonserviceService {
     return this.http.post("http://localhost:9090/api/product", product);
   }
 
+  saveSupplierData(supplier:Supplier)
+  {
+    alert("we are at CS supplier ")
+    return  this.http.post("http://localhost:9090/sapi/supplier", supplier);
+  }
+
   getProduct()
   {
     return this.http.get<Product[]>("http://localhost:9090/api/getProduct");
+  }
+
+  getSupplier()
+  {
+    return this.http.get<Supplier[]>("http://localhost:9090/sapi/getsupplier")
   }
 
   updateData(pro:Product)
@@ -46,4 +70,8 @@ export class CommonserviceService {
   {
     return this.http.delete("http://localhost:9090/api/delete"+"/"+productID);
   }
+
+  
+
+
 }
