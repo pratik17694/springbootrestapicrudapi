@@ -1,5 +1,6 @@
 package com.infy.springbootrestapicrudapp.app.productController;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infy.springbootrestapicrudapp.app.Model.Product;
+import com.infy.springbootrestapicrudapp.app.Response.ApiErrorResponse;
 import com.infy.springbootrestapicrudapp.app.Response.BaseResponse;
 import com.infy.springbootrestapicrudapp.app.productService.ProductService;
 
@@ -47,8 +49,16 @@ public class ProductController {
 	public ResponseEntity<BaseResponse<Optional<Product>>> getSingleData(@PathVariable("productID") Integer productID)
 	{
 		Optional<Product> getSingleData= productService.checkData(productID);
-		BaseResponse<Optional<Product>> baseResponse= new BaseResponse<Optional<Product>>(200, "fetching data", getSingleData);
+		BaseResponse<Optional<Product>> baseResponse= new BaseResponse<Optional<Product>>(200, "fetching single data", getSingleData);
 		return new ResponseEntity<BaseResponse<Optional<Product>>>(baseResponse, HttpStatus.OK);
+	}
+	
+	
+	public ResponseEntity<ApiErrorResponse> handleUserNotPresent()
+	{
+		ApiErrorResponse apiErrorResponse= new ApiErrorResponse(404, "user Not Present !", new Date());
+		return new ResponseEntity<ApiErrorResponse>(apiErrorResponse,HttpStatus.NOT_FOUND);
+		
 	}
 	
 	@PutMapping(value = "/product/{productID}")

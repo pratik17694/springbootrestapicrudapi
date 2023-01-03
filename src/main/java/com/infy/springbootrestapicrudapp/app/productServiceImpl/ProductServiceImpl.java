@@ -1,11 +1,13 @@
 package com.infy.springbootrestapicrudapp.app.productServiceImpl;
 
+import java.io.Console;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.infy.springbootrestapicrudapp.app.Model.Product;
+import com.infy.springbootrestapicrudapp.app.Response.UserNotFound;
 import com.infy.springbootrestapicrudapp.app.productRepositary.ProductRepositary;
 import com.infy.springbootrestapicrudapp.app.productService.ProductService;
 
@@ -46,10 +48,16 @@ public class ProductServiceImpl implements ProductService {
 	public Optional<Product> checkData(Integer productID) {
 		
 		Optional<Product> optional= productRepositary.findById(productID);
-		return optional;
+		
+		if(optional.isPresent())
+		{
+			return optional;
+		
+		}
+		else
+		{
+			throw new UserNotFound("Product ID"+ productID);
+		}
+		
 	}
-
-	
-	
-
 }
