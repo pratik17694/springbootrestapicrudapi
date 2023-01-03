@@ -1,12 +1,10 @@
 package com.infy.springbootrestapicrudapp.app.restException;
 
 import java.util.Date;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import com.infy.springbootrestapicrudapp.app.Response.ApiErrorResponse;
 import com.infy.springbootrestapicrudapp.app.Response.UserNotFound;
 
@@ -17,7 +15,7 @@ public class ErrorHandler {
 	public ResponseEntity<ApiErrorResponse> handleUserNotFound()
 	{
 		ApiErrorResponse apiErrorResponse= new ApiErrorResponse(404, "User Not Found", new Date());
-		
+		System.out.println(HttpStatus.NOT_FOUND);
 		return new ResponseEntity<ApiErrorResponse>(apiErrorResponse,HttpStatus.NOT_FOUND);
 		
 	}
